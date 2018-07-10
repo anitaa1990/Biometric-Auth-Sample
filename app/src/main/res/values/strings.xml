@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">BiometricPrompt-Sample</string>
+
+    <string name="btn_authenticate">Login</string>
+
+    <string name="biometric_title">Login</string>
+    <string name="biometric_subtitle">Login to your Osta account</string>
+    <string name="biometric_description">Place your finger on the device home button to verify your identity</string>
+    <string name="biometric_negative_button_text">CANCEL</string>
+
+
+    <string name="biometric_error_sdk_not_supported">CANCEL</string>
+    <string name="biometric_error_hardware_not_supported">CANCEL</string>
+    <string name="biometric_error_fingerprint_not_available">CANCEL</string>
+    <string name="biometric_error_permission_not_granted">CANCEL</string>
+    <string name="biometric_failure">Login not successful!</string>
+    <string name="biometric_cancelled">Authentication cancelled by user</string>
+    <string name="biometric_success">Login Successful</string>
+
+</resources>
