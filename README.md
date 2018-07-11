@@ -1,0 +1,8 @@
+# Biometric-Auth-Sample
+Add Biometric Authentication to any Android app
+
+This library provides an easy way to implement fingerprint authentication without having to deal with all the boilerplate stuff going on inside.
+
+
+<p><a href="https://github.com/anitaa1990/Biometric-Auth-Sample/blob/master/media/1.png" target="_blank"><img src="https://github.com/anitaa1990/Biometric-Auth-Sample/blob/master/media/1.png" width="250" style="max-width:100%;"></a></p>
+
