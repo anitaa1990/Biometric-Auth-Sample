@@ -9,10 +9,10 @@
     <string name="biometric_negative_button_text">CANCEL</string>
 
 
-    <string name="biometric_error_sdk_not_supported">CANCEL</string>
-    <string name="biometric_error_hardware_not_supported">CANCEL</string>
-    <string name="biometric_error_fingerprint_not_available">CANCEL</string>
-    <string name="biometric_error_permission_not_granted">CANCEL</string>
+    <string name="biometric_error_sdk_not_supported">Sdk version not supported</string>
+    <string name="biometric_error_hardware_not_supported">Device does not support biometric authentication</string>
+    <string name="biometric_error_fingerprint_not_available">Fingerprint is not registered in device</string>
+    <string name="biometric_error_permission_not_granted">Permission is not granted by user</string>
     <string name="biometric_failure">Login not successful!</string>
     <string name="biometric_cancelled">Authentication cancelled by user</string>
     <string name="biometric_success">Login Successful</string>
