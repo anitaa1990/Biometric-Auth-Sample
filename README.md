@@ -16,18 +16,8 @@ This library provides an easy way to implement fingerprint authentication withou
 
 ```gradle
 dependencies {
-        implementation 'com.an.biometric:biometric-auth:0.1.0'
+        implementation(group: 'com.an.biometric', name: 'biometric-auth', version: '0.1.0', ext: 'aar', classifier: '')
 }
-```
-
-<b>Maven Dependecy - Java</b></br>
-```xml
-<dependency>
-  <groupId>com.an.biometric</groupId>
-  <artifactId>biometric-auth</artifactId>
-  <version>0.1.0</version>
-  <type>pom</type>
-</dependency>
 ```
 
 <h2>Usage</h2>
