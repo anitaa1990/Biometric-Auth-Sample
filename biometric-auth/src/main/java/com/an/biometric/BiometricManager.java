@@ -25,37 +25,45 @@ public class BiometricManager extends BiometricManagerV23 {
 
         if(title == null) {
             biometricCallback.onBiometricAuthenticationInternalError("Biometric Dialog title cannot be null");
+            return;
         }
 
 
         if(subtitle == null) {
             biometricCallback.onBiometricAuthenticationInternalError("Biometric Dialog subtitle cannot be null");
+            return;
         }
 
 
         if(description == null) {
             biometricCallback.onBiometricAuthenticationInternalError("Biometric Dialog description cannot be null");
+            return;
         }
 
         if(negativeButtonText == null) {
             biometricCallback.onBiometricAuthenticationInternalError("Biometric Dialog negative button text cannot be null");
+            return;
         }
 
 
         if(!BiometricUtils.isSdkVersionSupported()) {
             biometricCallback.onSdkVersionNotSupported();
+            return;
         }
 
         if(!BiometricUtils.isPermissionGranted(context)) {
             biometricCallback.onBiometricAuthenticationPermissionNotGranted();
+            return;
         }
 
         if(!BiometricUtils.isHardwareSupported(context)) {
             biometricCallback.onBiometricAuthenticationNotSupported();
+            return;
         }
 
         if(!BiometricUtils.isFingerprintAvailable(context)) {
             biometricCallback.onBiometricAuthenticationNotAvailable();
+            return;
         }
 
         displayBiometricDialog(biometricCallback);
