@@ -45,6 +45,7 @@ public class BiometricManagerV23 {
     protected String description;
     protected String negativeButtonText;
     private BiometricDialogV23 biometricDialogV23;
+    protected CancellationSignal mCancellationSignalV23 = new CancellationSignal();
 
 
     public void displayBiometricPromptV23(final BiometricCallback biometricCallback) {
@@ -55,7 +56,7 @@ public class BiometricManagerV23 {
             cryptoObject = new FingerprintManagerCompat.CryptoObject(cipher);
             FingerprintManagerCompat fingerprintManagerCompat = FingerprintManagerCompat.from(context);
 
-            fingerprintManagerCompat.authenticate(cryptoObject, 0, new CancellationSignal(),
+            fingerprintManagerCompat.authenticate(cryptoObject, 0, mCancellationSignalV23,
                     new FingerprintManagerCompat.AuthenticationCallback() {
                         @Override
                         public void onAuthenticationError(int errMsgId, CharSequence errString) {
