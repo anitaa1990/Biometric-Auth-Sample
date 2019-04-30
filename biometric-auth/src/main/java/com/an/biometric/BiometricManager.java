@@ -12,6 +12,8 @@ import androidx.annotation.NonNull;
 public class BiometricManager extends BiometricManagerV23 {
 
 
+    protected CancellationSignal mCancellationSignal = new CancellationSignal();
+
     protected BiometricManager(final BiometricBuilder biometricBuilder) {
         this.context = biometricBuilder.context;
         this.title = biometricBuilder.title;
@@ -25,40 +27,58 @@ public class BiometricManager extends BiometricManagerV23 {
 
         if(title == null) {
             biometricCallback.onBiometricAuthenticationInternalError("Biometric Dialog title cannot be null");
+            return;
         }
 
 
         if(subtitle == null) {
             biometricCallback.onBiometricAuthenticationInternalError("Biometric Dialog subtitle cannot be null");
+            return;
         }
 
 
         if(description == null) {
             biometricCallback.onBiometricAuthenticationInternalError("Biometric Dialog description cannot be null");
+            return;
         }
 
         if(negativeButtonText == null) {
             biometricCallback.onBiometricAuthenticationInternalError("Biometric Dialog negative button text cannot be null");
+            return;
         }
 
 
         if(!BiometricUtils.isSdkVersionSupported()) {
             biometricCallback.onSdkVersionNotSupported();
+            return;
         }
 
         if(!BiometricUtils.isPermissionGranted(context)) {
             biometricCallback.onBiometricAuthenticationPermissionNotGranted();
+            return;
         }
 
         if(!BiometricUtils.isHardwareSupported(context)) {
             biometricCallback.onBiometricAuthenticationNotSupported();
+            return;
         }
 
         if(!BiometricUtils.isFingerprintAvailable(context)) {
             biometricCallback.onBiometricAuthenticationNotAvailable();
+            return;
         }
 
         displayBiometricDialog(biometricCallback);
+    }
+
+    public void cancelAuthentication(){
+        if(BiometricUtils.isBiometricPromptEnabled()) {
+            if (!mCancellationSignal.isCanceled())
+                mCancellationSignal.cancel();
+        }else{
+            if (!mCancellationSignalV23.isCanceled())
+                mCancellationSignalV23.cancel();
+        }
     }
 
 
@@ -86,7 +106,7 @@ public class BiometricManager extends BiometricManagerV23 {
                     }
                 })
                 .build()
-                .authenticate(new CancellationSignal(), context.getMainExecutor(),
+                .authenticate(mCancellationSignal, context.getMainExecutor(),
                         new BiometricCallbackV28(biometricCallback));
     }
 

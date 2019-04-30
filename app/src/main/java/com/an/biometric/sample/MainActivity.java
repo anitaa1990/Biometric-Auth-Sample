@@ -14,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 public class MainActivity extends AppCompatActivity implements BiometricCallback {
 
     private Button button;
+    BiometricManager mBiometricManager;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -28,13 +29,15 @@ public class MainActivity extends AppCompatActivity implements BiometricCallback
                 /*
                  *
                  * */
-                new BiometricManager.BiometricBuilder(MainActivity.this)
+                mBiometricManager = new BiometricManager.BiometricBuilder(MainActivity.this)
                         .setTitle(getString(R.string.biometric_title))
                         .setSubtitle(getString(R.string.biometric_subtitle))
                         .setDescription(getString(R.string.biometric_description))
                         .setNegativeButtonText(getString(R.string.biometric_negative_button_text))
-                        .build()
-                        .authenticate(MainActivity.this);
+                        .build();
+
+                //start authentication
+                mBiometricManager.authenticate(MainActivity.this);
             }
         });
     }
@@ -73,6 +76,7 @@ public class MainActivity extends AppCompatActivity implements BiometricCallback
     @Override
     public void onAuthenticationCancelled() {
         Toast.makeText(getApplicationContext(), getString(R.string.biometric_cancelled), Toast.LENGTH_LONG).show();
+        mBiometricManager.cancelAuthentication();
     }
 
     @Override
